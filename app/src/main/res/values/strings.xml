@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">ensayoPruebaBG2</string>
+    <string name="app_hinos">App_Hinost</string>
+
+    <string name="hint_usuario">Usuario</string>
+    <string name="hint_password">Password</string>
+    <string name="button_login">Login</string>
+
+    <string name="shared_preferences_name" translatable="false">sharedPreferenceAM</string>
+    <string name="shared_preferences_item_user" translatable="false">User</string>
+    <string name="shared_preferences_item_password" translatable="false">Password</string>
+    <string name="shared_preferences_item_token" translatable="false">Token</string>
+    <string name="shared_preferences_item_credentials" translatable="false">Credentials</string>
+    <string name="shared_preferences_item_posts" translatable="false">Posts</string>
+
+</resources>
