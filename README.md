@@ -10,6 +10,7 @@
 
 
 ## Seleccion de Post 
+- Los recursos para los Post los estamos usando de `https://jsonplaceholder.typicode.com/`
 - Una vez logueado, podremos observar la lista de Posts y boton para crear un nuevo post
 - Cada item es seleccionable para acceder a la siguiente pantalla 
 
