@@ -31,8 +31,6 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     protected void onResume() {
         super.onResume();
-        etvEpr.setText("maria@mail.com");
-        etvPassword.setText("12345");
     }
 
     private void initView() {
