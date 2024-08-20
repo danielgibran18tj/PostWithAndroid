@@ -126,6 +126,12 @@
                     android:textColor="@android:color/white"
                     android:textStyle="bold" />
 
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:visibility="gone" /> <!-- Oculto por defecto -->
 
             </LinearLayout>
         </androidx.cardview.widget.CardView>

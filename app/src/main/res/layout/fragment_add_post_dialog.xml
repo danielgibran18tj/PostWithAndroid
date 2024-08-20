@@ -4,25 +4,32 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp"
-    android:background="@drawable/dialog_background">
+    android:background="@drawable/dialog_background"
+    android:elevation="0dp"
+    >
 
     <EditText
         android:id="@+id/etUserId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/blue_grey_300"
         android:hint="UserId" />
 
     <EditText
         android:id="@+id/etId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/blue_grey_300"
         android:hint="Id" />
 
     <EditText
         android:id="@+id/etTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/blue_grey_300"
         android:hint="Title" />
 
     <EditText
@@ -30,10 +37,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Body"
+        android:textStyle="bold"
+        android:textColor="@color/blue_grey_300"
         android:layout_marginTop="8dp"
-        android:minHeight="100dp"
-        android:gravity="top"
-        android:inputType="textMultiLine" />
+        android:gravity="top" />
 
     <LinearLayout
         android:layout_width="match_parent"

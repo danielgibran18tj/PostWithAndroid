@@ -1,8 +1,8 @@
 package com.example.ensayopruebabg2.presentation.presenter;
 
 
-import com.example.ensayopruebabg2.data.entity.PostEntity;
 import com.example.ensayopruebabg2.data.source.local.temp.LocalStorage;
+import com.example.ensayopruebabg2.domain.model.PostModel;
 import com.example.ensayopruebabg2.platform.di.navigation.Navigator;
 import com.example.ensayopruebabg2.platform.views.base.BaseActivity;
 import com.example.ensayopruebabg2.presentation.view.SecondView;
@@ -32,19 +32,19 @@ public class SecondPresenterImpl extends BaseActivity implements SecondPresenter
     public void viewPosts(String postsJson) {
         localStorage.setPosts(postsJson);
         Gson gson = new Gson();
-        Type postsListType = new TypeToken<List<PostEntity>>() {}.getType();
-        List<PostEntity> posts = gson.fromJson(postsJson, postsListType);
+        Type postsListType = new TypeToken<List<PostModel>>() {}.getType();
+        List<PostModel> posts = gson.fromJson(postsJson, postsListType);
         view.get().navigateToFragment(navigator.navigateToSelectPosts(posts));
     }
 
     @Override
     public void addNewPost(String userId, String id, String title, String body){
-        PostEntity postNew = new PostEntity(Integer.parseInt(userId) , Integer.parseInt(id) , title, body);
+        PostModel postNew = new PostModel(Integer.parseInt(userId) , Integer.parseInt(id) , title, body);
         String postsJson = localStorage.getPosts();
 
         Gson gson = new Gson();
-        Type postsListType = new TypeToken<List<PostEntity>>() {}.getType();
-        List<PostEntity> posts = gson.fromJson(postsJson, postsListType);
+        Type postsListType = new TypeToken<List<PostModel>>() {}.getType();
+        List<PostModel> posts = gson.fromJson(postsJson, postsListType);
         posts.add(postNew);
         view.get().navigateToFragment(navigator.navigateToSelectPosts(posts));
 

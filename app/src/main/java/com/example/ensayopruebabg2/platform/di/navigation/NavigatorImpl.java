@@ -6,7 +6,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.ensayopruebabg2.data.entity.PostEntity;
+import com.example.ensayopruebabg2.domain.model.PostModel;
 import com.example.ensayopruebabg2.platform.views.activities.LoginActivity;
 import com.example.ensayopruebabg2.platform.views.activities.SecondActivity;
 import com.example.ensayopruebabg2.platform.views.fragments.DetailsPostFragment;
@@ -38,7 +38,7 @@ public class NavigatorImpl implements Navigator {
     }
 
     @Override
-    public void navigateToSecond(List<PostEntity> posts) {
+    public void navigateToSecond(List<PostModel> posts) {
         Intent intent = new Intent(context, SecondActivity.class);
         Gson gson = new Gson();
         String postsJson = gson.toJson(posts);
@@ -48,14 +48,14 @@ public class NavigatorImpl implements Navigator {
     }
 
     @Override
-    public Fragment navigateToSelectPosts(List<PostEntity> posts) {
+    public Fragment navigateToSelectPosts(List<PostModel> posts) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("Posts", (Serializable) posts);
         return SelectPostsFragment.newInstance(bundle);
     }
 
     @Override
-    public Fragment navigateToDetailsPost(PostEntity post) {
+    public Fragment navigateToDetailsPost(PostModel post) {
         Bundle bundle = new Bundle();
         bundle.putSerializable("Post", post);
         return DetailsPostFragment.newInstance(bundle);

@@ -2,11 +2,11 @@ package com.example.ensayopruebabg2.presentation.presenter;
 
 import androidx.annotation.NonNull;
 
-import com.example.ensayopruebabg2.data.entity.PostEntity;
 import com.example.ensayopruebabg2.data.source.local.temp.LocalStorage;
 import com.example.ensayopruebabg2.domain.Observer;
 import com.example.ensayopruebabg2.domain.interactor.SignIn;
 import com.example.ensayopruebabg2.domain.interactor.UseCaseFactory;
+import com.example.ensayopruebabg2.domain.model.PostModel;
 import com.example.ensayopruebabg2.platform.di.navigation.Navigator;
 import com.example.ensayopruebabg2.presentation.view.LoginView;
 
@@ -61,10 +61,10 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter 
     }
 
 
-    private final class SessionObserver extends Observer<List<PostEntity>> {
+    private final class SessionObserver extends Observer<List<PostModel>> {
 
         @Override
-        public void onSuccess(@NonNull List<PostEntity> listPost) {
+        public void onSuccess(@NonNull List<PostModel> listPost) {
             navigator.navigateToSecond(listPost);
         }
 

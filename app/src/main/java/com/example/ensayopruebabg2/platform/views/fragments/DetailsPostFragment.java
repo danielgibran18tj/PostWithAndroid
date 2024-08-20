@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.ensayopruebabg2.R;
 import com.example.ensayopruebabg2.data.entity.CommentEntity;
-import com.example.ensayopruebabg2.data.entity.PostEntity;
 import com.example.ensayopruebabg2.data.entity.UserEntity;
+import com.example.ensayopruebabg2.domain.model.PostModel;
 import com.example.ensayopruebabg2.platform.views.activities.SecondActivity;
 import com.example.ensayopruebabg2.platform.views.common.CommentPostAdapter;
 import com.example.ensayopruebabg2.presentation.presenter.DetailsPostPresenter;
@@ -84,7 +84,7 @@ public class DetailsPostFragment extends Fragment implements DetailsPostView {
 
     private void initViewAction() {
         tvUserLayout.setVisibility(View.GONE);
-        PostEntity post = (PostEntity) getArguments().getSerializable("Post");
+        PostModel post = (PostModel) getArguments().getSerializable("Post");
         tvId.setText(String.valueOf(post.getId()));
         tvTitle.setText(post.getTitle());
         tvBody.setText(post.getBody());

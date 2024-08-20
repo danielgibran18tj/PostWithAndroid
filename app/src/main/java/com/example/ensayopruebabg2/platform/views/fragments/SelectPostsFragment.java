@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.example.ensayopruebabg2.R;
-import com.example.ensayopruebabg2.data.entity.PostEntity;
+import com.example.ensayopruebabg2.domain.model.PostModel;
 import com.example.ensayopruebabg2.platform.views.activities.SecondActivity;
 import com.example.ensayopruebabg2.platform.views.common.PostSelectAdapter;
 import com.example.ensayopruebabg2.presentation.presenter.SelectPostsPresenter;
@@ -61,7 +61,7 @@ public class SelectPostsFragment extends Fragment implements SelectPostsView {
 
     private void initViewAction() {
         if (getArguments() != null){
-            List<PostEntity> listPostsEntity = (List<PostEntity>) getArguments().getSerializable("Posts");
+            List<PostModel> listPostsEntity = (List<PostModel>) getArguments().getSerializable("Posts");
             adapter = new PostSelectAdapter(
                     listPostsEntity,
                     getContext(),
@@ -71,17 +71,6 @@ public class SelectPostsFragment extends Fragment implements SelectPostsView {
                     }
             );
 
-//            adapter = new ProductSelectAdapter(
-//                    listProductEntity,
-//                    getContext(),
-//                    new ProductSelectAdapter.OnItemClickListener() {
-//                        @Override
-//                        public void onItemClick(ProductEntity product, int position) {
-//                            adapter.notifyItemChanged(position);
-//                            presenter.showDetails(product);
-//                        }
-//                    }
-//            );
             rvPostSelect.setAdapter(adapter);
         }
 

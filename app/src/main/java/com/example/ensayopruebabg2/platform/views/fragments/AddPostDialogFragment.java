@@ -1,5 +1,6 @@
 package com.example.ensayopruebabg2.platform.views.fragments;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -56,6 +57,12 @@ public class AddPostDialogFragment extends DialogFragment implements SecondView 
         btnCancel.setOnClickListener(v -> dismiss());  // Cierra el diálogo
 
         return view;
+    }
+
+    @NonNull
+    @Override
+    public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        return new Dialog(requireContext(), R.style.CustomDialogTheme);
     }
 
     @Override

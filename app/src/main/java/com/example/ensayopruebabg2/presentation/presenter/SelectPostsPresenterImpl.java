@@ -1,6 +1,6 @@
 package com.example.ensayopruebabg2.presentation.presenter;
 
-import com.example.ensayopruebabg2.data.entity.PostEntity;
+import com.example.ensayopruebabg2.domain.model.PostModel;
 import com.example.ensayopruebabg2.platform.di.navigation.Navigator;
 import com.example.ensayopruebabg2.presentation.view.SelectPostsView;
 
@@ -24,7 +24,7 @@ public class SelectPostsPresenterImpl extends BasePresenter implements SelectPos
     }
 
     @Override
-    public void showDetails(PostEntity post) {
+    public void showDetails(PostModel post) {
         view.get().navigate(navigator.navigateToDetailsPost(post));
     }
 }

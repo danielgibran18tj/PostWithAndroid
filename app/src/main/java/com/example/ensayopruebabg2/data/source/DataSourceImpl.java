@@ -3,8 +3,10 @@ package com.example.ensayopruebabg2.data.source;
 import com.example.ensayopruebabg2.data.entity.CommentEntity;
 import com.example.ensayopruebabg2.data.entity.LoginRequestBody;
 import com.example.ensayopruebabg2.data.entity.LoginResponseEntity;
+import com.example.ensayopruebabg2.data.entity.PokemonResponse;
 import com.example.ensayopruebabg2.data.entity.PostEntity;
 import com.example.ensayopruebabg2.data.entity.UserEntity;
+import com.example.ensayopruebabg2.data.source.local.temp.ImgService;
 
 import java.io.IOException;
 import java.util.List;
@@ -17,12 +19,13 @@ public class DataSourceImpl implements DataSource {
 
     private final AuthService authService;
     private final Services services;
-
+    private final ImgService imgService;
 
     @Inject
-    public DataSourceImpl(AuthService authService, Services services) {
+    public DataSourceImpl(AuthService authService, Services services, ImgService imgService) {
         this.authService = authService;
         this.services = services;
+        this.imgService = imgService;
     }
 
     @Override
@@ -54,6 +57,12 @@ public class DataSourceImpl implements DataSource {
     @Override
     public List<UserEntity> fetchUsers() throws IOException {
         Response<List<UserEntity>> response = services.getUsers().execute();
+        return response.body();
+    }
+
+    @Override
+    public PokemonResponse fetchImgs(String id) throws IOException {
+        Response<PokemonResponse> response = imgService.getPosts(id).execute();
         return response.body();
     }
 

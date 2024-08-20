@@ -35,22 +35,7 @@ public class ManagerServices {
     }
 
 
-//    public static Retrofit getApi(Context context) {
-//        OkHttpClient.Builder httpClientBuilder;
-//        httpClientBuilder = new OkHttpClient.Builder();
-//        httpClientBuilder
-//                .callTimeout(2, TimeUnit.MINUTES)
-//                .connectTimeout(80, TimeUnit.SECONDS)
-//                .readTimeout(80, TimeUnit.SECONDS)
-//                .writeTimeout(80, TimeUnit.SECONDS);
-//
-//        // Agrega el interceptor de registro
-//        httpClientBuilder.addInterceptor(new LoggingInterceptor());
-//
-//        return new Retrofit.Builder()
-//                .baseUrl("https://")
-//                .addConverterFactory(GsonConverterFactory.create(new GsonBuilder().setLenient().create()))
-//                .client(httpClientBuilder.build())
-//                .build();
-//    }
+    public static Retrofit getApiServiceC() {
+        return createRetrofit("https://pokeapi.co/api/v2/");
+    }
 }

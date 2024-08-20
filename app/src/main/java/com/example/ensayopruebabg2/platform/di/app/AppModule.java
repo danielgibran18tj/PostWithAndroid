@@ -8,6 +8,7 @@ import com.example.ensayopruebabg2.data.source.AuthService;
 import com.example.ensayopruebabg2.data.source.DataSource;
 import com.example.ensayopruebabg2.data.source.DataSourceImpl;
 import com.example.ensayopruebabg2.data.source.Services;
+import com.example.ensayopruebabg2.data.source.local.temp.ImgService;
 import com.example.ensayopruebabg2.data.source.local.temp.LocalStorage;
 import com.example.ensayopruebabg2.data.source.local.temp.LocalStorageImpl;
 import com.example.ensayopruebabg2.domain.executor.JobScheduler;
@@ -46,7 +47,9 @@ public class AppModule {
 
     @Provides
     @Singleton
-    DataSource provideSessionDataSource(AuthService authService, Services service) { return new DataSourceImpl(authService, service); }
+    DataSource provideSessionDataSource(AuthService authService, Services service, ImgService imgService) {
+        return new DataSourceImpl(authService, service, imgService);
+    }
 
     @Provides
     @Singleton
@@ -76,6 +79,13 @@ public class AppModule {
 
     @Provides
     @Singleton
+    @Named("serviceC")
+    Retrofit provideRetrofitServiceC() {
+        return ManagerServices.getApiServiceC();
+    }
+
+    @Provides
+    @Singleton
     Services provideServiceA(@Named("serviceA") Retrofit retrofit) {
         return retrofit.create(Services.class);
     }
@@ -84,6 +94,12 @@ public class AppModule {
     @Singleton
     AuthService provideServiceB(@Named("serviceB") Retrofit retrofit) {
         return retrofit.create(AuthService.class);
+    }
+
+    @Provides
+    @Singleton
+    ImgService provideServiceC(@Named("serviceC") Retrofit retrofit) {
+        return retrofit.create(ImgService.class);
     }
 
 }

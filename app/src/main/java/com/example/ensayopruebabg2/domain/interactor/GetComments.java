@@ -3,7 +3,6 @@ package com.example.ensayopruebabg2.domain.interactor;
 import android.util.Log;
 
 import com.example.ensayopruebabg2.data.entity.CommentEntity;
-import com.example.ensayopruebabg2.data.entity.PostEntity;
 import com.example.ensayopruebabg2.domain.executor.JobScheduler;
 import com.example.ensayopruebabg2.domain.executor.UIScheduler;
 import com.example.ensayopruebabg2.domain.repository.Repository;

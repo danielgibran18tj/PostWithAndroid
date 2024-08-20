@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ensayopruebabg2.R;
 import com.example.ensayopruebabg2.data.entity.CommentEntity;
-import com.example.ensayopruebabg2.data.entity.PostEntity;
 
 import java.text.MessageFormat;
 import java.util.List;

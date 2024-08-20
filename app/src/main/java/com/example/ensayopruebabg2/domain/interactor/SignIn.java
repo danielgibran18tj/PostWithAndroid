@@ -3,16 +3,16 @@ package com.example.ensayopruebabg2.domain.interactor;
 import android.util.Log;
 
 
-import com.example.ensayopruebabg2.data.entity.PostEntity;
 import com.example.ensayopruebabg2.domain.executor.JobScheduler;
 import com.example.ensayopruebabg2.domain.executor.UIScheduler;
+import com.example.ensayopruebabg2.domain.model.PostModel;
 import com.example.ensayopruebabg2.domain.repository.Repository;
 
 import java.util.List;
 
 import io.reactivex.Single;
 
-public class SignIn extends UseCase<List<PostEntity>, SignIn.Params> {
+public class SignIn extends UseCase<List<PostModel>, SignIn.Params> {
 
     private final Repository repository;
 
@@ -24,10 +24,10 @@ public class SignIn extends UseCase<List<PostEntity>, SignIn.Params> {
     }
 
     @Override
-    Single<List<PostEntity>> buildUseCaseObservable(final Params params){
+    Single<List<PostModel>> buildUseCaseObservable(final Params params){
         return Single.create(emitter -> {
             try {
-                List<PostEntity> listPosts = repository.signIn(params.isRemote(), params.getUser(), params.getPassword());
+                List<PostModel> listPosts = repository.signIn(params.isRemote(), params.getUser(), params.getPassword());
                 if (listPosts == null) {
                     throw new Exception("Credenciales incorrectas o lista de publicaciones es nula.");
                 }

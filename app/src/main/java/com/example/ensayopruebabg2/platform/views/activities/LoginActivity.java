@@ -1,10 +1,13 @@
 package com.example.ensayopruebabg2.platform.views.activities;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.appcompat.widget.AppCompatTextView;
@@ -21,6 +24,8 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Inject
     LoginPresenter presenter;
     private Button btnLogin;
+    private ProgressBar progressBar;
+
     private EditText etvEpr;
     private EditText etvPassword;
     private AppCompatTextView etvShowPass;
@@ -43,6 +48,7 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     private void initView() {
         btnLogin = findViewById(R.id.button);
+        progressBar = findViewById(R.id.progressBar);
         etvEpr = findViewById(R.id.etLoginUsername);
         etvPassword = findViewById(R.id.etLoginPassword);
         etvShowPass = findViewById(R.id.etLoginShowPass);
@@ -50,18 +56,20 @@ public class LoginActivity extends BaseActivity implements LoginView {
 
     private void initViewAction() {
         btnLogin.setEnabled(true);
-        etvShowPass.setText("Ver Contra");
+        etvShowPass.setText("Show PassWord");
         btnLogin.setOnClickListener(v -> {
             presenter.signIn();
+            btnLogin.setText(""); // Oculta el texto del botón
+            progressBar.setVisibility(View.VISIBLE);
         });
         etvShowPass.setOnClickListener(v -> {
             showPassword = !showPassword;
             if (showPassword) {
                 etvPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                etvShowPass.setText("Ocultar Contra");
+                etvShowPass.setText("Hide Password");
             } else {
                 etvPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                etvShowPass.setText("Ver Contra");
+                etvShowPass.setText("Show PassWord");
             }
         });
     }
@@ -84,5 +92,10 @@ public class LoginActivity extends BaseActivity implements LoginView {
     @Override
     public void enableButton(boolean enable) {
         btnLogin.setEnabled(enable);
+        if (enable){
+            progressBar.setVisibility(View.GONE);
+            btnLogin.setText("S I G N  I N");
+            btnLogin.setEnabled(true);
+        }
     }
 }

@@ -1,10 +1,13 @@
 package com.example.ensayopruebabg2.platform.views.common;
 
+import android.app.Activity;
 import android.content.Context;
+import android.graphics.drawable.PictureDrawable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,15 +15,18 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.caverock.androidsvg.SVG;
 import com.example.ensayopruebabg2.R;
-import com.example.ensayopruebabg2.data.entity.PostEntity;
+import com.example.ensayopruebabg2.domain.model.PostModel;
 
+import java.net.URL;
 import java.text.MessageFormat;
 import java.util.List;
 import java.util.Objects;
 
+
 public class PostSelectAdapter extends RecyclerView.Adapter<PostSelectAdapter.ViewHolder> {
-    private List<PostEntity> list;
+    private List<PostModel> list;
     private Context context;
     private final OnItemClickListener itemClickListener;
 
@@ -28,10 +34,12 @@ public class PostSelectAdapter extends RecyclerView.Adapter<PostSelectAdapter.Vi
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final TextView tvBody;
         final TextView tvTitle;
+        final ImageView imageViewProduct;
         final AppCompatTextView tvSeeMore;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            imageViewProduct = itemView.findViewById(R.id.tvImgPost);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvBody = itemView.findViewById(R.id.tvBody);
             tvSeeMore =  itemView.findViewById(R.id.tvSeeMore);
@@ -39,7 +47,7 @@ public class PostSelectAdapter extends RecyclerView.Adapter<PostSelectAdapter.Vi
     }
 
 
-    public PostSelectAdapter(List<PostEntity> list, Context context, OnItemClickListener itemClickListener) {
+    public PostSelectAdapter(List<PostModel> list, Context context, OnItemClickListener itemClickListener) {
         this.list = list;
         this.context = context;
         this.itemClickListener = itemClickListener;
@@ -63,11 +71,22 @@ public class PostSelectAdapter extends RecyclerView.Adapter<PostSelectAdapter.Vi
             vh.tvSeeMore.setVisibility(View.GONE);
             vh.tvSeeMore.setText("");
 
-            PostEntity post = list.get(position);
+            PostModel post = list.get(position);
 
             String title = post.getTitle().substring(0, 1).toUpperCase() + post.getTitle().substring(1).toLowerCase();
             vh.tvTitle.setText(MessageFormat.format("{0}", title));
             vh.tvBody.setText(MessageFormat.format("{0}", post.getBody()));
+
+            new Thread(() -> {
+                try {
+                    SVG svg = SVG.getFromInputStream(new URL(post.getImg()).openStream());
+                    ((Activity) context).runOnUiThread(() -> {
+                        vh.imageViewProduct.setImageDrawable(new PictureDrawable(svg.renderToPicture()));
+                    });
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
 
             // Verificar si el texto ocupa mas de una línea
             vh.tvBody.post(() -> {
@@ -110,6 +129,6 @@ public class PostSelectAdapter extends RecyclerView.Adapter<PostSelectAdapter.Vi
 
 
     public interface OnItemClickListener {
-        void onItemClick(PostEntity post, int position);
+        void onItemClick(PostModel post, int position);
     }
 }
