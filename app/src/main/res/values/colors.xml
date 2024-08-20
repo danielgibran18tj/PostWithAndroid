@@ -6,7 +6,11 @@
     <color name="red">#ff0000</color>
     <color name="colorBlue_light">#50B4FF</color>
 
-    <color name="colorPrimary">#8BC34A</color>
+    <color name="colorPrimary">#1976D2</color>
+    <color name="colorPrimaryLight">#1E88E5</color>
+    <color name="colorAccentDark">#F50057</color>
+    <color name="colorAccentLight">#FF80AB</color>
+
     <color name="colorPrimaryDark">#689F38</color>
     <color name="colorAccent">#085494</color>
     <color name="primary_light">#DCEDC8</color>
@@ -14,4 +18,18 @@
     <color name="secondary_text">#757575</color>
     <color name="icons">#212121</color>
     <color name="divider">#BDBDBD</color>
+
+    <color name="grey_10">#e6e6e6</color>
+    <color name="grey_40">#999999</color>
+    <color name="grey_60">#666666</color>
+    <color name="grey_80">#37474F</color>
+    <color name="grey_90">#263238</color>
+
+
+    <color name="green_500">#4CAF50</color>
+
+    <color name="blue_grey_300">#90A4AE</color>
+    <color name="blue_600">#1E88E5</color>
+
+
 </resources>

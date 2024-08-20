@@ -37,6 +37,7 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter 
     @Override
     public void signIn() {
         LoginView loginView = view.get();
+        loginView.enableButton(false);
         boolean isValid = true;
 
         if (loginView.getEprUI() == null || loginView.getEprUI().isEmpty()) {
@@ -69,6 +70,7 @@ public class LoginPresenterImpl extends BasePresenter implements LoginPresenter 
 
         @Override
         public void onError(Throwable ignored) {
+            view.get().enableButton(true);
             view.get().showFail();
         }
 

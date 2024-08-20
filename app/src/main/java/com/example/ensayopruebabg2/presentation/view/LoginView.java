@@ -4,4 +4,6 @@ public interface LoginView {
     String getEprUI();
     String getPasswordUI();
     void showFail();
+    void enableButton(boolean enable);
+
 }

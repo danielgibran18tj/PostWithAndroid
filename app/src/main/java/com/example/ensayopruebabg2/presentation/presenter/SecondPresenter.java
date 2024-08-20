@@ -11,4 +11,6 @@ public interface SecondPresenter {
     void addNewPost(String UserId, String Id, String Title, String Body);
 
     void toLogin();
+
+    void toLoguot();
 }

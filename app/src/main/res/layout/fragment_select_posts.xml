@@ -20,14 +20,15 @@
 
     <ImageView
         android:id="@+id/imageAddPost"
-        android:layout_width="80dp"
+        android:layout_width="40dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="20dp"
         app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/img_add"
+        android:src="@drawable/img_agg"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

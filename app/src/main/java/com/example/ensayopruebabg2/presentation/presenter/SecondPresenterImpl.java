@@ -55,4 +55,9 @@ public class SecondPresenterImpl extends BaseActivity implements SecondPresenter
         navigator.navigateToLogin();
     }
 
+    @Override
+    public void toLoguot() {
+        localStorage.setToken("");
+    }
+
 }
