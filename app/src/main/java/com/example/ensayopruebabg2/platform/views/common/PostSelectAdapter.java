@@ -77,16 +77,18 @@ public class PostSelectAdapter extends RecyclerView.Adapter<PostSelectAdapter.Vi
             vh.tvTitle.setText(MessageFormat.format("{0}", title));
             vh.tvBody.setText(MessageFormat.format("{0}", post.getBody()));
 
-            new Thread(() -> {
-                try {
-                    SVG svg = SVG.getFromInputStream(new URL(post.getImg()).openStream());
-                    ((Activity) context).runOnUiThread(() -> {
-                        vh.imageViewProduct.setImageDrawable(new PictureDrawable(svg.renderToPicture()));
-                    });
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }).start();
+            if (post.getImg()!= null){
+                new Thread(() -> {
+                    try {
+                        SVG svg = SVG.getFromInputStream(new URL(post.getImg()).openStream());
+                        ((Activity) context).runOnUiThread(() -> {
+                            vh.imageViewProduct.setImageDrawable(new PictureDrawable(svg.renderToPicture()));
+                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }).start();
+            }
 
             // Verificar si el texto ocupa mas de una línea
             vh.tvBody.post(() -> {
